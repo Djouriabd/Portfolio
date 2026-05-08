@@ -373,6 +373,16 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .rightPageContent {
+    padding: 1.5rem;
+    overflow: visible;
+    height: auto;
+    min-height: 500px;
+  }
+}
+
+
 .pinsBoard {
   position: relative;
   height: 100%;
