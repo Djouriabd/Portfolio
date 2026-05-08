@@ -1,0 +1,450 @@
+/* ====================================================
+   NOTEBOOK SHELL — notebook.module.css (v2 - video match)
+   ==================================================== */
+
+.desk {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-desk);
+  z-index: 1;
+}
+
+/* Wood grain overlay on desk */
+.desk::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      102deg,
+      transparent,
+      transparent 60px,
+      rgba(0,0,0,0.03) 60px,
+      rgba(0,0,0,0.03) 61px
+    );
+  pointer-events: none;
+}
+
+/* ============================================================
+   CLOSED BOOK — shown on front/back cover spreads
+   Portrait orientation, spine + tabs visible
+   ============================================================ */
+.closedBook {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  /* Portrait: roughly A4 ratio */
+  width: min(52vh, 480px);
+  height: min(82vh, 680px);
+  z-index: 2;
+  border-radius: 4px 6px 6px 4px;
+  box-shadow:
+    -12px 0 40px rgba(0,0,0,0.55),
+    0 24px 70px rgba(0,0,0,0.65),
+    4px 0 16px rgba(0,0,0,0.3);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.closedBook:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+}
+
+/* Narrow spine strip on the right of closed book */
+.closedSpineStrip {
+  width: 28px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg,
+    #C0C0C0 0%, #A8A8A8 15%, #D8D8D8 30%,
+    #B0B0B0 50%, #D0D0D0 70%, #A0A0A0 85%, #C8C8C8 100%
+  );
+  border-radius: 6px 0 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow:
+    inset -2px 0 4px rgba(0,0,0,0.2),
+    inset 2px 0 4px rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vertical rail line on spine */
+.closedSpineStrip::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  background: linear-gradient(180deg, #888, #BBB, #888);
+  border-radius: 2px;
+}
+
+/* Screw dots on closed spine */
+.closedScrew {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F0F0F0, #888 70%);
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.5),
+    inset 0 1px 1px rgba(255,255,255,0.6);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+/* Cover face */
+.closedCover {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Tabs on LEFT side of closed book */
+.closedTabs {
+  position: absolute;
+  right: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 30;
+}
+
+.closedTab {
+  width: 32px;
+  height: 34px;
+  min-height: 0;
+  flex-shrink: 1;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+  box-shadow: -2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.closedTab:hover { width: 34px; opacity: 1; }
+.closedTab.activeTab { width: 34px; opacity: 1; }
+
+.closedTabLabel {
+  writing-mode: vertical-rl;
+  transform: rotate(0deg);
+  font-family: var(--font-comfortaa);
+  font-size: 0.45rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.9);
+  text-transform: uppercase;
+}
+
+/* Click-to-open hint on closed cover */
+.openHint {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  font-family: var(--font-comfortaa);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(244, 241, 226, 0.5);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+/* ============================================================
+   OPEN BOOK — double-page spread (all inner pages)
+   ============================================================ */
+.book {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: min(90vw, 1100px);
+  height: min(85vh, 720px);
+  border-radius: 4px 8px 8px 4px;
+  box-shadow:
+    -8px 0 30px rgba(0,0,0,0.6),
+    0 20px 60px rgba(0,0,0,0.7),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  z-index: 2;
+}
+
+/* ---- Left & Right Pages ---- */
+.leftPage,
+.rightPage {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-paper);
+}
+
+.leftPage {
+  border-radius: 4px 0 0 4px;
+  box-shadow: inset -4px 0 12px rgba(0,0,0,0.12);
+  border-right: 1px solid rgba(81, 50, 41, 0.08);
+}
+
+.rightPage {
+  border-radius: 0 8px 8px 0;
+  box-shadow: inset 4px 0 12px rgba(0,0,0,0.06);
+}
+
+/* Subtle horizontal ruled lines (paper texture) */
+.leftPage::before,
+.rightPage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      rgba(81, 50, 41, 0.055) 27px,
+      rgba(81, 50, 41, 0.055) 28px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Chrome Spine (open book) ---- */
+.chromeSpine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Vertical rod/rail behind rings */
+.chromeSpine::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  background: linear-gradient(180deg,
+    #E8E8E8 0%, #C0C0C0 20%,
+    #E0E0E0 40%, #B8B8B8 60%,
+    #D8D8D8 80%, #C8C8C8 100%
+  );
+  border-radius: 3px;
+  box-shadow:
+    1px 0 4px rgba(0,0,0,0.3),
+    -1px 0 2px rgba(255,255,255,0.5);
+}
+
+/* Each ring assembly */
+.ringAssembly {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 22px;
+  z-index: 1;
+}
+
+/* Left screw (on left page) */
+.screwLeft,
+.screwRight {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  position: absolute;
+  background: radial-gradient(circle at 35% 30%,
+    #F8F8F8 0%,
+    #D8D8D8 30%,
+    #A0A0A0 70%,
+    #787878 100%
+  );
+  box-shadow:
+    0 2px 5px rgba(0,0,0,0.5),
+    inset 0 1px 2px rgba(255,255,255,0.7),
+    inset 0 -1px 2px rgba(0,0,0,0.3);
+}
+
+.screwLeft  { left: 5px; }
+.screwRight { right: 5px; }
+
+/* Phillips cross on screw */
+.screwLeft::before,
+.screwLeft::after,
+.screwRight::before,
+.screwRight::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(80,80,80,0.6);
+  border-radius: 1px;
+}
+
+.screwLeft::before,
+.screwRight::before {
+  width: 7px; height: 1.5px;
+}
+
+.screwLeft::after,
+.screwRight::after {
+  width: 1.5px; height: 7px;
+}
+
+/* Center clip/bridge connecting two screws */
+.ringBridge {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 8px;
+  background: linear-gradient(180deg,
+    #E0E0E0 0%, #B0B0B0 50%, #D0D0D0 100%
+  );
+  border-radius: 4px;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.4),
+    inset 0 1px 1px rgba(255,255,255,0.5);
+}
+
+/* ---- Tab Dividers (LEFT side — like video) ---- */
+.tabs {
+  position: absolute;
+  right: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 20;
+}
+
+.tab {
+  width: 32px;
+  height: 34px;
+  min-height: 0;
+  flex-shrink: 1;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  opacity: 0.65;
+  box-shadow: -2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.tab:hover { width: 34px; opacity: 1; }
+.tab.activeTab { width: 34px; opacity: 1; }
+
+.tabLabel {
+  writing-mode: vertical-rl;
+  transform: rotate(0deg);
+  font-family: var(--font-comfortaa);
+  font-size: 0.45rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.92);
+  text-transform: uppercase;
+}
+
+/* ---- Navigation Arrows ---- */
+.navArea {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.navArea:hover { opacity: 1; }
+.navLeft  { left: 0; }
+.navRight { right: 0; }
+
+.navArrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(81, 50, 41, 0.12);
+  border: 1.5px solid rgba(81, 50, 41, 0.25);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.navArrow:hover {
+  background: rgba(81, 50, 41, 0.22);
+  transform: scale(1.1);
+}
+
+/* ---- Page Counter ---- */
+.pageCounter {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-comfortaa);
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ---- Keyboard hint ---- */
+.keyHint {
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-comfortaa);
+  font-size: 0.6rem;
+  color: rgba(244, 241, 226, 0.3);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Page slide animation */
+@keyframes slideInRight {
+  from { opacity: 0.5; transform: translateX(20px); }
+  to   { opacity: 1;   transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0.5; transform: translateX(-20px); }
+  to   { opacity: 1;   transform: translateX(0); }
+}
+
+.slideRight { animation: slideInRight 0.35s ease forwards; }
+.slideLeft  { animation: slideInLeft  0.35s ease forwards; }
