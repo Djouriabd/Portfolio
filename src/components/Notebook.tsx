@@ -129,7 +129,9 @@ export default function Notebook() {
   if (isCoverSpread) {
     // Front cover shows the LEFT component as the cover face
     // Back cover shows the LEFT component as the cover face
-    const coverContent = isFirstSpread ? spread.left : spread.right;
+    const coverContent = isFirstSpread ? spread.left : spread.left;
+  // Actually, you might want spread.left for both since that's where the main content is
+
 
 
     return (
