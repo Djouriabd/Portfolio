@@ -16,9 +16,12 @@
   .pageContent {
     padding: 1.5rem;
     overflow: visible; /* Allow scrolling on mobile stack */
+    /* Set min-height so marginTop: auto works for page elements */
+    min-height: 500px;
     height: auto;
   }
 }
+
 
 
 .pageNumber {
@@ -100,13 +103,14 @@
 
 .coverTitle {
   font-family: var(--font-anton);
-  font-size: clamp(4rem, 10vw, 7rem);
+  font-size: clamp(3rem, 12vw, 7rem);
   line-height: 0.9;
   color: var(--color-paper);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
 }
+
 
 .coverWelcome {
   font-family: var(--font-comfortaa);
@@ -158,12 +162,13 @@
 
 .hireTitle {
   font-family: var(--font-anton);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
   color: var(--color-paper);
   line-height: 1;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
+
 
 .hireSubtitle {
   font-family: var(--font-comfortaa);

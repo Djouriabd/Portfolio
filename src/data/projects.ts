@@ -103,7 +103,7 @@ export const projectsPage2: Project[] = [
     id: "proj-08",
     title: "ELEVATE Announcement",
     description: "Announcement for ELEVATE an event organized by NCS Club.",
-    tags: ["Graphic Design", "Illustrator"],
+    tags: ["Video Editing", "CapCut"],
     link: "https://www.instagram.com/reel/DIYoEIBNEVi/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
     image: "/images/image8.png",
     imageColor: "#C9DFF0",
