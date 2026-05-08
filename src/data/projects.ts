@@ -90,9 +90,9 @@ export const projectsPage2: Project[] = [
   },
   {
     id: "proj-07",
-    title: "Dashboard Design",
-    description: "Data visualization dashboard with interactive charts, clean layout and dark/light modes.",
-    tags: ["UI/UX", "Figma", "Data Viz"],
+    title: "NCS Hack Participant guide",
+    description: "Participant guide for NCS Hack, an hackathon event organized by NCS Club.",
+    tags: ["UI/UX", "Figma"],
     link: "https://www.figma.com/design/UtQPPIniQBlGsnWOD3GK2l/participant-guide?node-id=0-1&t=AI7YXNn3wWOqKgHU-1",
     image: "/images/image7.png",
     imageColor: "#D4C9E0",
@@ -101,8 +101,8 @@ export const projectsPage2: Project[] = [
   },
   {
     id: "proj-08",
-    title: "Print Design",
-    description: "Series of print materials: posters, brochures, flyers for cultural and tech events.",
+    title: "ELEVATE Announcement",
+    description: "Announcement for ELEVATE an event organized by NCS Club.",
     tags: ["Graphic Design", "Illustrator"],
     link: "https://www.instagram.com/reel/DIYoEIBNEVi/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
     image: "/images/image8.png",

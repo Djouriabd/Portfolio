@@ -377,10 +377,11 @@
   .rightPageContent {
     padding: 1.5rem;
     overflow: visible;
-    height: auto;
-    min-height: 500px;
+    /* Crucial: fixed height so absolute children (pinsBoard) have a reference */
+    height: 600px; 
   }
 }
+
 
 
 .pinsBoard {
