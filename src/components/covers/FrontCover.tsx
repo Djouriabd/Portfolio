@@ -23,9 +23,10 @@ export function FrontCoverLeft() {
         </div>
 
         {/* Main title */}
-        <h1 className={styles.coverTitle} style={{ fontSize: 'clamp(2.8rem, 8vw, 4rem)' }}>
+        <h1 className={styles.coverTitle}>
           PORT<br />FOLIO
         </h1>
+
 
         {/* Welcome */}
         <p className={styles.coverWelcome} style={{ marginTop: '1rem' }}>
@@ -61,7 +62,8 @@ export function FrontCoverLeft() {
 
         {/* Name + year at the bottom */}
         <div style={{ marginTop: 'auto' }}>
-          <p className={styles.coverName} style={{ fontSize: '0.95rem' }}>Djouairia Abdellaoui</p>
+          <p className={styles.coverName}>Djouairia Abdellaoui</p>
+
           <p className={styles.coverRole}>AKA. Djouri</p>
         </div>
       </div>

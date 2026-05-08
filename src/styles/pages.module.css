@@ -103,13 +103,22 @@
 
 .coverTitle {
   font-family: var(--font-anton);
-  font-size: clamp(3rem, 12vw, 7rem);
-  line-height: 0.9;
+  font-size: clamp(2.8rem, 8vw, 4.5rem); /* Default for desktop */
+  line-height: 0.95;
   color: var(--color-paper);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
 }
+
+@media (max-width: 768px) {
+  .coverTitle {
+    font-size: 2.2rem; /* Explicitly smaller for mobile */
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+}
+
 
 
 .coverWelcome {
@@ -121,6 +130,14 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 768px) {
+  .coverWelcome {
+    font-size: 0.75rem;
+    margin-top: 0.8rem;
+  }
+}
+
+
 .coverName {
   font-family: var(--font-comfortaa);
   font-size: 1rem;
@@ -130,6 +147,15 @@
   border-top: 1px solid rgba(244,241,226,0.3);
   padding-top: 1.5rem;
 }
+
+@media (max-width: 768px) {
+  .coverName {
+    font-size: 0.85rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
 
 .coverRole {
   font-family: var(--font-comfortaa);
@@ -162,12 +188,20 @@
 
 .hireTitle {
   font-family: var(--font-anton);
-  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   color: var(--color-paper);
   line-height: 1;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
+
+@media (max-width: 768px) {
+  .hireTitle {
+    font-size: 2.1rem; /* Explicitly smaller for mobile */
+    line-height: 1.1;
+  }
+}
+
 
 
 .hireSubtitle {

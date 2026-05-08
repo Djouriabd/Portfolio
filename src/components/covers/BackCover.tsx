@@ -27,9 +27,10 @@ export function BackCoverLeft() {
           Get in Touch
         </div>
 
-        <h2 className={styles.hireTitle} style={{ fontSize: 'clamp(2.8rem, 8vw, 4rem)' }}>
+        <h2 className={styles.hireTitle}>
           Hire<br />Me.
         </h2>
+
 
         <div style={{ width: '40px', height: '2px', background: 'rgba(244,241,226,0.3)', borderRadius: '1px', margin: '1.5rem 0' }} />
 
