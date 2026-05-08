@@ -98,10 +98,15 @@ export default function Notebook() {
     if (index === current) return;
     if (index < 0 || index >= spreads.length) return;
     setCurrent(index);
+    // On mobile stack, scroll back to top when switching spreads
+    if (window.innerWidth <= 768) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [current, spreads.length]);
 
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
+
 
   // Keyboard navigation
   useEffect(() => {
